@@ -11,7 +11,7 @@ int main()
     istringstream stream(stroka);
     stream>>a; stream>>op1;
     while(stream>>b){
-        if((op1=='*')||(op2=='/')){
+        if((op1=='*')||(op1=='/')){
             if(op1=='*'){
                 a=a*b;
             }
@@ -30,20 +30,21 @@ int main()
             stream>>op2;
             if((op2=='+')||(op2=='-')){
                 if(op1=='+'){
-                    a+=b; op1=op2; op2=0;
+                    a=a+b;
                 }
                 if(op1=='-'){
-                    a-=b; op1=op2; op2=0;
+                    a=a-b;
                 }
+                op1=op2; op2=0;
             }
             if((op2=='*')||(op2=='/')){
-                while((op2!='+')||(op2!='-')){
+                while((op2=='*')||(op2=='/')){
                     stream>>c;
                     if(op2=='*'){
                         b=b*c;
                     }
                     if(op2=='/'){
-                        if(b!=0){
+                        if(c!=0){
                             b=b/c;
                         }
                         else{
@@ -54,13 +55,15 @@ int main()
                     stream>>op2;
                 }
                 if(op1=='+'){
-                    a+=b; op1=op2; op2=0;
+                    a+=b;
                 }
                 if(op1=='-'){
-                    a-=b; op1=op2; op2=0;
+                    a-=b;
                 }
+                op1=op2; op2=0;
             }
         }
     }
     cout<<a<<endl;
+    return 0;
 }
