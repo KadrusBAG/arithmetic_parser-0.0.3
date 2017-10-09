@@ -27,40 +27,49 @@ int main()
             stream>>op1;
         }
         if((op1=='+')||(op1=='-')){
-            stream>>op2;
-            if((op2=='+')||(op2=='-')){
-                if(op1=='+'){
-                    a=a+b;
+            if(stream>>op2){
+                if((op2=='+')||(op2=='-')){
+                    if(op1=='+'){
+                        a=a+b;
+                    }
+                    if(op1=='-'){
+                        a=a-b;
+                    }
+                    op1=op2; op2=0;
                 }
-                if(op1=='-'){
-                    a=a-b;
+                if((op2=='*')||(op2=='/')){
+                    while((op2=='*')||(op2=='/')){
+                        stream>>c;
+                        if(op2=='*'){
+                            b=b*c;
+                        }
+                        if(op2=='/'){
+                            if(c!=0){
+                                b=b/c;
+                            }
+                            else{
+                                cout<<"ERROR"<<endl;
+                                return -1;
+                            }
+                        }
+                        stream>>op2;
+                    }
+                    if(op1=='+'){
+                        a+=b;
+                    }
+                    if(op1=='-'){
+                        a-=b;
+                    }
+                    op1=op2; op2=0;
                 }
-                op1=op2; op2=0;
             }
-            if((op2=='*')||(op2=='/')){
-                while((op2=='*')||(op2=='/')){
-                    stream>>c;
-                    if(op2=='*'){
-                        b=b*c;
-                    }
-                    if(op2=='/'){
-                        if(c!=0){
-                            b=b/c;
-                        }
-                        else{
-                            cout<<"ERROR"<<endl;
-                            return -1;
-                        }
-                    }
-                    stream>>op2;
-                }
+            else{
                 if(op1=='+'){
                     a+=b;
                 }
                 if(op1=='-'){
                     a-=b;
                 }
-                op1=op2; op2=0;
             }
         }
     }
