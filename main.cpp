@@ -25,9 +25,11 @@ int main()
                     return -1;
                 }
             }
-            stream>>op1;
+            if(!(stream>>op1)){
+                break;
+            }
         }
-        if((op1=='+')||(op1=='-')){
+        else if((op1=='+')||(op1=='-')){
             if(stream>>op2){
                 if((op2=='+')||(op2=='-')){
                     if(op1=='+'){
