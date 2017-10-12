@@ -53,7 +53,9 @@ int main()
                                 return -1;
                             }
                         }
-                        stream>>op2;
+                        if(!(stream>>op2)){
+                            break;
+                        }
                     }
                     if(op1=='+'){
                         a+=b;
